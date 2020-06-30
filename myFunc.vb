@@ -423,44 +423,56 @@ Module myFunc
         Dim itemExist, subItemExist As Boolean
         itemExist = False
         subItemExist = False
-        '
-        Dim item As New ToolStripMenuItem(mainForm.sDepartment(mainForm.iDepartment))
-        Dim subItem As New ToolStripMenuItem(mainForm.i_pivot_wsDict(mainForm.iDepartment)(mainForm.iCategory).Name)
-        'Dim subsubItem As New ToolStripMenuItem("Item1 SubItem SubItem")
-        'subItem.DropDownItems.Add(subsubItem)
 
-        Console.WriteLine(subItem.DropDownItems.Count)
-        If subItem.DropDownItems.Count = 0 Then
+        Dim s_item, s_subitem As String
+        s_item = mainForm.sDepartment(mainForm.iDepartment)
+        s_subitem = mainForm.i_pivot_wsDict(mainForm.iDepartment)(mainForm.iCategory).Name
+
+        Dim item As New ToolStripMenuItem(s_item)
+        Dim subItem As New ToolStripMenuItem(s_subitem)
+
+        Dim index As Integer
+
+        If smetaForm.menuStripCat.DropDownItems.Count = 0 Then
+            smetaForm.menuStripCat.DropDownItems.Add(item)
+        End If
+
+        For Each itm As ToolStripMenuItem In smetaForm.menuStripCat.DropDownItems
+            If itm.ToString = s_item Then
+                itemExist = True
+            End If
+        Next itm
+
+        If Not itemExist Then
+            smetaForm.menuStripCat.DropDownItems.Add(item)
+        End If
+
+
+        For Each itm As ToolStripMenuItem In smetaForm.menuStripCat.DropDownItems
+
+            If itm.ToString = s_item Then
+                index = smetaForm.menuStripCat.DropDownItems.IndexOf(itm)
+                item = smetaForm.menuStripCat.DropDownItems.Item(index)
+                Console.WriteLine(item)
+            End If
+
+        Next itm
+
+        If item.DropDownItems.Count = 0 Then
             item.DropDownItems.Add(subItem)
         End If
-        Console.WriteLine(subItem.DropDownItems.Count)
 
-        'Console.WriteLine(item.DropDownItems.Count)
-        'If item.DropDownItems.Count = 0 Then
-        '    smetaForm.menuStripCat.DropDownItems.Add(item)
-        'End If
-        'Console.WriteLine(item.DropDownItems.Count)
+        For Each itm As ToolStripMenuItem In item.DropDownItems
 
-        'For Each itm As ToolStripMenuItem In subItem.DropDownItems
-        '    Console.WriteLine(itm.Name & vbTab & mainForm.i_pivot_wsDict(mainForm.iDepartment)(mainForm.iCategory).Name)
-        '    If itm.Name = mainForm.i_pivot_wsDict(mainForm.iDepartment)(mainForm.iCategory).Name Then
-        '        subItemExist = True
-        '    End If
-        'Next itm
+            If itm.ToString = s_subitem Then
+                subItemExist = True
+            End If
 
-        'For Each itm As ToolStripMenuItem In item.DropDownItems
-        '    If itm.Name = mainForm.sDepartment(mainForm.iDepartment) Then
-        '        itemExist = True
-        '    End If
-        'Next itm
+        Next itm
 
-        'If Not subItemExist Then
-        '    item.DropDownItems.Add(subItem)
-        'End If
-
-        'If Not itemExist Then
-        '    smetaForm.menuStripCat.DropDownItems.Add(item)
-        'End If
+        If Not subItemExist Then
+            item.DropDownItems.Add(subItem)
+        End If
 
         subItemExist = False
         itemExist = False
