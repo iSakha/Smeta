@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="expireDate" Type="System.DateTime" Scope="Application">
+      <Value Profile="(Default)">2020-09-01</Value>
+    </Setting>
+    <Setting Name="lastRun" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">2020-06-26</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
