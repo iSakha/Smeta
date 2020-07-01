@@ -266,7 +266,7 @@ Module myFunc
 
         create_dataset(mainForm.iDepartment, mainForm.iCategory)
         mainForm.DGV.DataSource = mainForm.dts.Tables(0)
-        format_DGV()
+        format_DGV(mainForm.DGV)
 
     End Sub
 
@@ -274,55 +274,68 @@ Module myFunc
     '             === Format DGV ===
     '===================================================================================
 
-    Sub format_DGV()
+    Sub format_DGV(_dgv As DataGridView)
 
         Dim col() As Color
 
         col = {Color.FromArgb(252, 228, 214), Color.FromArgb(221, 235, 247), Color.FromArgb(237, 237, 237),
             Color.FromArgb(226, 239, 218), Color.FromArgb(237, 226, 246)}
 
-        mainForm.DGV.Columns(0).Width = 55                ' #
-        mainForm.DGV.Columns(1).Width = 230               ' Fixture
-        mainForm.DGV.Columns(2).Width = 65                ' Q-ty
-        mainForm.DGV.Columns(2).DefaultCellStyle.Font = New Font("Tahoma", 10)
-        mainForm.DGV.Columns(2).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        mainForm.DGV.Columns(3).Width = 62                ' BelImlight
-        mainForm.DGV.Columns(3).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        mainForm.DGV.Columns(4).Width = 62                ' PRLightigTouring
-        mainForm.DGV.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        mainForm.DGV.Columns(5).Width = 62                ' BlackOut
-        mainForm.DGV.Columns(5).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        mainForm.DGV.Columns(6).Width = 62                ' Vision
-        mainForm.DGV.Columns(6).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        mainForm.DGV.Columns(7).Width = 62                ' Stage
-        mainForm.DGV.Columns(7).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        _dgv.Columns(0).Width = 55                ' #
+        _dgv.Columns(1).Width = 230               ' Fixture
+        _dgv.Columns(2).Width = 65                ' Q-ty
+        _dgv.Columns(2).DefaultCellStyle.Font = New Font("Tahoma", 10)
+        _dgv.Columns(2).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        _dgv.Columns(3).Width = 62                ' BelImlight
+        _dgv.Columns(3).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        _dgv.Columns(4).Width = 62                ' PRLightigTouring
+        _dgv.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        _dgv.Columns(5).Width = 62                ' BlackOut
+        _dgv.Columns(5).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        _dgv.Columns(6).Width = 62                ' Vision
+        _dgv.Columns(6).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        _dgv.Columns(7).Width = 62                ' Stage
+        _dgv.Columns(7).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
 
-        mainForm.DGV.Columns(8).Width = 48                ' Weight
-        mainForm.DGV.Columns(8).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        mainForm.DGV.Columns(9).Width = 48                ' Power/length
-        mainForm.DGV.Columns(9).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        mainForm.DGV.Columns(10).Width = 48                ' Price
-        mainForm.DGV.Columns(10).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        _dgv.Columns(8).Width = 48                ' Weight
+        _dgv.Columns(8).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        _dgv.Columns(9).Width = 48                ' Power/length
+        _dgv.Columns(9).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        _dgv.Columns(10).Width = 48                ' Price
+        _dgv.Columns(10).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
 
-        'mainForm.DGV.Columns(11).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        'mainForm.DGV.Columns(11).Width = 65
-        'mainForm.DGV.Columns(11).DefaultCellStyle.Font = New Font("Tahoma", 10, FontStyle.Bold)
+        '_dgv.Columns(11).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        '_dgv.Columns(11).Width = 65
+        '_dgv.Columns(11).DefaultCellStyle.Font = New Font("Tahoma", 10, FontStyle.Bold)
 
-        mainForm.DGV.Columns(11).Visible = False
+        _dgv.Columns(11).Visible = False
 
-        mainForm.DGV.Columns(3).DefaultCellStyle.BackColor = col(0)
-        mainForm.DGV.Columns(4).DefaultCellStyle.BackColor = col(1)
-        mainForm.DGV.Columns(5).DefaultCellStyle.BackColor = col(2)
-        mainForm.DGV.Columns(6).DefaultCellStyle.BackColor = col(3)
-        mainForm.DGV.Columns(7).DefaultCellStyle.BackColor = col(4)
+        _dgv.Columns(3).DefaultCellStyle.BackColor = col(0)
+        _dgv.Columns(4).DefaultCellStyle.BackColor = col(1)
+        _dgv.Columns(5).DefaultCellStyle.BackColor = col(2)
+        _dgv.Columns(6).DefaultCellStyle.BackColor = col(3)
+        _dgv.Columns(7).DefaultCellStyle.BackColor = col(4)
 
-        For i = 0 To mainForm.DGV.Rows.Count - 2
+        For i = 0 To _dgv.Rows.Count - 2
 
-            mainForm.DGV.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(237, 237, 250)
+            _dgv.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(237, 237, 250)
 
         Next i
+        Select Case mainForm.chk_detail.Checked
+            Case True
+                _dgv.Columns(3).Visible = True
+                _dgv.Columns(4).Visible = True
+                _dgv.Columns(5).Visible = True
+                _dgv.Columns(6).Visible = True
+                _dgv.Columns(7).Visible = True
+            Case False
+                _dgv.Columns(3).Visible = False
+                _dgv.Columns(4).Visible = False
+                _dgv.Columns(5).Visible = False
+                _dgv.Columns(6).Visible = False
+                _dgv.Columns(7).Visible = False
+        End Select
     End Sub
-
     '===================================================================================
     '             === CellClick on DGV ===
     '===================================================================================
@@ -362,7 +375,7 @@ Module myFunc
         dt.Columns.Add("Weight")
         dt.Columns.Add("Power")
         dt.Columns.Add("Price")
-        dt.Columns.Add("Result")
+        'dt.Columns.Add("Result")
 
 
         dt.Columns(0).DataType = System.Type.GetType("System.Int32")               ' #
@@ -383,8 +396,8 @@ Module myFunc
 
         dt.Columns(10).DataType = System.Type.GetType("System.Int32")              ' Price
         dt.Columns.Add()
-        dt.Columns(11).DataType = System.Type.GetType("System.Int32")              ' Result
-        dt.Columns(11).ColumnName = "Result"
+        'dt.Columns(11).DataType = System.Type.GetType("System.Int32")              ' Result
+        'dt.Columns(11).ColumnName = "Result"
 
         dt.TableName = mainForm.dts.Tables(0).TableName
 
@@ -402,6 +415,7 @@ Module myFunc
         addItem()
         addRow(dt.TableName)
 
+
     End Sub
 
     '===================================================================================
@@ -410,9 +424,10 @@ Module myFunc
     Sub addRow(_tName As String)
 
         mainForm.smeta_dts.Tables(_tName).ImportRow(mainForm.dts.Tables(0).Rows(mainForm.selIndex))
+        mainForm.smeta_dts.Tables(_tName).Rows(mainForm.smeta_dts.Tables(_tName).Rows.Count - 1).Item(2) = CInt(mainForm.txt_qty.Text)
+        smetaForm.DGV_smeta.DataSource = mainForm.smeta_dts.Tables(_tName)
 
-        'smetaForm.DGV_smeta_1.DataSource = mainForm.smeta_dts.Tables(_tName)
-
+        format_DGV(smetaForm.DGV_smeta)
     End Sub
 
     '===================================================================================
@@ -457,9 +472,11 @@ Module myFunc
             End If
 
         Next itm
-
+        '----------------------------------------------------------------------------------------
         If item.DropDownItems.Count = 0 Then
-            item.DropDownItems.Add(subItem)
+
+            ' Click event for dynamically created sub menu strip items
+            item.DropDownItems.Add(subItem.ToString, Nothing, AddressOf MenuItem_Click)
         End If
 
         For Each itm As ToolStripMenuItem In item.DropDownItems
@@ -471,11 +488,22 @@ Module myFunc
         Next itm
 
         If Not subItemExist Then
-            item.DropDownItems.Add(subItem)
+
+            ' Click event for dynamically created sub menu strip items
+            item.DropDownItems.Add(subItem.ToString, Nothing, AddressOf MenuItem_Click)
         End If
 
         subItemExist = False
         itemExist = False
 
     End Sub
+    '===================================================================================
+    '          === Click event for dynamically created sub menu strip items ===
+    '===================================================================================
+    Public Sub MenuItem_Click(sender As Object, e As EventArgs)
+        Dim menuItem = DirectCast(sender, ToolStripMenuItem)
+        'MessageBox.Show(menuItem.Text)
+        smetaForm.DGV_smeta.DataSource = mainForm.smeta_dts.Tables(menuItem.Text & "_tbl")
+    End Sub
+
 End Module

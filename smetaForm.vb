@@ -60,4 +60,17 @@
         End If
 
     End Sub
+
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Dim itm As ToolStripMenuItem
+        For Each itm In menuStripCat.DropDownItems
+            Me.menuStripCat.DropDownItems.Add("test", Nothing, AddressOf MenuItem_Click)
+        Next
+
+    End Sub
+
+
+
+
 End Class

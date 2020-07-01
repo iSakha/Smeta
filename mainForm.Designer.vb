@@ -38,7 +38,7 @@ Partial Class mainForm
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.txt_qty = New System.Windows.Forms.TextBox()
         Me.btn_store_qty = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -129,7 +129,9 @@ Partial Class mainForm
         Me.item_stage = New System.Windows.Forms.ToolStripMenuItem()
         Me.item_summary = New System.Windows.Forms.ToolStripMenuItem()
         Me.FBD = New System.Windows.Forms.FolderBrowserDialog()
+        Me.chk_detail = New System.Windows.Forms.CheckBox()
         Me.grbx_header.SuspendLayout()
+        Me.grbx_footer.SuspendLayout()
         Me.grbx_body.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DGV, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -242,6 +244,7 @@ Partial Class mainForm
         'grbx_footer
         '
         Me.grbx_footer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.grbx_footer.Controls.Add(Me.chk_detail)
         Me.grbx_footer.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.grbx_footer.Location = New System.Drawing.Point(0, 581)
         Me.grbx_footer.Name = "grbx_footer"
@@ -270,7 +273,7 @@ Partial Class mainForm
         Me.GroupBox1.BackColor = System.Drawing.Color.Gainsboro
         Me.GroupBox1.Controls.Add(Me.Label8)
         Me.GroupBox1.Controls.Add(Me.Label9)
-        Me.GroupBox1.Controls.Add(Me.TextBox3)
+        Me.GroupBox1.Controls.Add(Me.txt_qty)
         Me.GroupBox1.Controls.Add(Me.btn_store_qty)
         Me.GroupBox1.Controls.Add(Me.Label10)
         Me.GroupBox1.Location = New System.Drawing.Point(697, 89)
@@ -298,15 +301,15 @@ Partial Class mainForm
         Me.Label9.TabIndex = 5
         Me.Label9.Text = "Всего на складе"
         '
-        'TextBox3
+        'txt_qty
         '
-        Me.TextBox3.Font = New System.Drawing.Font("Segoe UI Symbol", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox3.Location = New System.Drawing.Point(8, 61)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(75, 33)
-        Me.TextBox3.TabIndex = 2
-        Me.TextBox3.Text = "42"
-        Me.TextBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.txt_qty.Font = New System.Drawing.Font("Segoe UI Symbol", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_qty.Location = New System.Drawing.Point(8, 61)
+        Me.txt_qty.Name = "txt_qty"
+        Me.txt_qty.Size = New System.Drawing.Size(75, 33)
+        Me.txt_qty.TabIndex = 2
+        Me.txt_qty.Text = "42"
+        Me.txt_qty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'btn_store_qty
         '
@@ -895,6 +898,20 @@ Partial Class mainForm
         Me.item_summary.Size = New System.Drawing.Size(169, 22)
         Me.item_summary.Text = "Pivot table"
         '
+        'chk_detail
+        '
+        Me.chk_detail.Appearance = System.Windows.Forms.Appearance.Button
+        Me.chk_detail.AutoSize = True
+        Me.chk_detail.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.chk_detail.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.chk_detail.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.chk_detail.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.chk_detail.Location = New System.Drawing.Point(47, 36)
+        Me.chk_detail.Name = "chk_detail"
+        Me.chk_detail.Size = New System.Drawing.Size(6, 6)
+        Me.chk_detail.TabIndex = 0
+        Me.chk_detail.UseVisualStyleBackColor = True
+        '
         'mainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -909,6 +926,8 @@ Partial Class mainForm
         Me.Text = "Form1"
         Me.grbx_header.ResumeLayout(False)
         Me.grbx_header.PerformLayout()
+        Me.grbx_footer.ResumeLayout(False)
+        Me.grbx_footer.PerformLayout()
         Me.grbx_body.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
@@ -1020,10 +1039,11 @@ Partial Class mainForm
     Friend WithEvents DGV As DataGridView
     Friend WithEvents Button1 As Button
     Friend WithEvents FBD As FolderBrowserDialog
-    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents txt_qty As TextBox
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Label8 As Label
     Friend WithEvents Label9 As Label
     Friend WithEvents btn_store_qty As TextBox
     Friend WithEvents Label10 As Label
+    Friend WithEvents chk_detail As CheckBox
 End Class

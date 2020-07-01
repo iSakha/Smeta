@@ -23,7 +23,7 @@ Partial Class smetaForm
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.DGV_smeta = New System.Windows.Forms.DataGridView()
         Me.menu_smeta = New System.Windows.Forms.MenuStrip()
         Me.menuStripCat = New System.Windows.Forms.ToolStripMenuItem()
         Me.Button2 = New System.Windows.Forms.Button()
@@ -31,7 +31,8 @@ Partial Class smetaForm
         Me.txt_subitem = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Button3 = New System.Windows.Forms.Button()
+        CType(Me.DGV_smeta, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.menu_smeta.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -44,14 +45,14 @@ Partial Class smetaForm
         Me.Button1.Text = "Button1"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'DataGridView1
+        'DGV_smeta
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.DataGridView1.Location = New System.Drawing.Point(0, 24)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(800, 489)
-        Me.DataGridView1.TabIndex = 2
+        Me.DGV_smeta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DGV_smeta.Dock = System.Windows.Forms.DockStyle.Top
+        Me.DGV_smeta.Location = New System.Drawing.Point(0, 24)
+        Me.DGV_smeta.Name = "DGV_smeta"
+        Me.DGV_smeta.Size = New System.Drawing.Size(800, 489)
+        Me.DGV_smeta.TabIndex = 2
         '
         'menu_smeta
         '
@@ -111,23 +112,33 @@ Partial Class smetaForm
         Me.Label2.TabIndex = 6
         Me.Label2.Text = "Subitems"
         '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(282, 530)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(75, 23)
+        Me.Button3.TabIndex = 7
+        Me.Button3.Text = "Button3"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
         'smetaForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 615)
+        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txt_subitem)
         Me.Controls.Add(Me.cmb_item)
-        Me.Controls.Add(Me.DataGridView1)
+        Me.Controls.Add(Me.DGV_smeta)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.menu_smeta)
         Me.MainMenuStrip = Me.menu_smeta
         Me.Name = "smetaForm"
         Me.Text = "smetaForm"
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DGV_smeta, System.ComponentModel.ISupportInitialize).EndInit()
         Me.menu_smeta.ResumeLayout(False)
         Me.menu_smeta.PerformLayout()
         Me.ResumeLayout(False)
@@ -135,7 +146,7 @@ Partial Class smetaForm
 
     End Sub
     Friend WithEvents Button1 As Button
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents DGV_smeta As DataGridView
     Friend WithEvents menu_smeta As MenuStrip
     Friend WithEvents menuStripCat As ToolStripMenuItem
     Friend WithEvents Button2 As Button
@@ -143,4 +154,5 @@ Partial Class smetaForm
     Friend WithEvents txt_subitem As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
+    Friend WithEvents Button3 As Button
 End Class

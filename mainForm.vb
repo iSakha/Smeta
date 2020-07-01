@@ -38,7 +38,8 @@ Public Class mainForm
     Private Sub mainForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         checkExpirationDate()
         smeta_dts = New DataSet
-        smetaForm.Show()
+        chk_detail.Text = "Кратко"
+        txt_qty.Text = String.Empty
     End Sub
 
     '===================================================================================
@@ -318,15 +319,23 @@ Public Class mainForm
         iCategory = 4
         fillDGV("Sound", sender)
     End Sub
-
 #End Region
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Me.Close()
     End Sub
 
+
     Private Sub dgv_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGV.CellClick
         dgv_clickCell(sender, e)
+        txt_qty.Text = ""
+        txt_qty.BackColor = Color.Yellow
+        txt_qty.Select()
+    End Sub
+    Private Sub txt_qty_TextChanged(sender As Object, e As EventArgs) Handles txt_qty.TextChanged
+        If txt_qty.Text <> "" Then
+            txt_qty.BackColor = Color.White
+        End If
     End Sub
 
     '===================================================================================
@@ -334,6 +343,10 @@ Public Class mainForm
     '===================================================================================
     Private Sub btn_add_to_smeta_Click(sender As Object, e As EventArgs) Handles btn_add_to_smeta.Click
 
+        If txt_qty.Text = "" Then
+            MsgBox("Требуется заполнить количество приборов!")
+            Exit Sub
+        End If
         createSmeta_dt()
 
         'Console.Write(smeta_dts.Tables.Count & vbTab)
@@ -342,6 +355,16 @@ Public Class mainForm
         smetaForm.Show()
 
     End Sub
-
+    Private Sub chk_detail_CheckStateChanged(sender As Object, e As EventArgs) Handles chk_detail.CheckStateChanged
+        If chk_detail.Checked = True Then
+            chk_detail.Text = "Подробно"
+        Else
+            chk_detail.Text = "Кратко"
+        End If
+        format_DGV(DGV)
+        If smetaForm.DGV_smeta.Rows.Count > 0 Then
+            format_DGV(smetaForm.DGV_smeta)
+        End If
+    End Sub
 
 End Class
